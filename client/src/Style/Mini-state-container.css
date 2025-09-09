@@ -1,0 +1,80 @@
+.mini-states-container {
+    margin-left: 1.8rem;
+    position: relative;
+    color: var(--textColor);
+}
+
+.mini-states-container .state-selector {
+    outline: none;
+    font-size: 15px;
+    margin-left: 10px;
+    position: absolute;
+    top: 0;
+    left: 5rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.95));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.5);
+    z-index: 10;
+    animation: dropdown-slide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdown-slide {
+    0% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mini-states-container .state-selector .state {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 165, 233, 0.1));
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    overflow-y: auto;
+    max-height: 300px;
+    font-weight: 500;
+    position: relative;
+}
+
+.mini-states-container .state-selector .state::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.mini-states-container .state-selector .state:hover {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(14, 165, 233, 0.2));
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.mini-states-container .state-selector .state:hover::before {
+    left: 100%;
+}
+
+.mini-states-container .state-selector .state.active {
+    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+    color: #fff;
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+}
+
+@media (max-width: 800px) {
+    .mini-states-container .state-selector {
+        left: 0;
+        top: 2rem;
+    }
+}

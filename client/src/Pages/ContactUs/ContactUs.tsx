@@ -1,0 +1,98 @@
+import "../../Style/Pages/ContactUs.css"
+// import subrata from "../../assets/Subrata.png"
+// import srideep from "../../assets/Srideep.jpg"
+import sandipto from "../../assets/sandipto.jpeg"
+import ahina from "../../assets/ahina.jpeg"
+import arnab from "../../assets/arnab.jpeg"
+import GitHub from "../../Icons/github";
+import LinkedIn from "../../Icons/linkedin";
+import Gmail from "../../Icons/Gmail";
+
+export default function ContactUs() {
+    return (
+        <>
+            <div className='page contactus'>
+                <MainComponents />
+            </div>
+        </>
+    )
+}
+
+function MainComponents() {
+    return (
+        <div className="developers-container">
+            <Developer
+                picture={sandipto}
+                role='frontend & backend'
+                developerName="Sandipto Roy"
+                gitHubLink="https://github.com/sandipto729"
+                linkedInLink="https://www.linkedin.com/in/sandipto-roy-675600277/"
+                email="sandipto729@gmail.com" />
+            <Developer
+                picture={ahina}
+                role='frontend & backend'
+                developerName="Ahina Ganguly"
+                gitHubLink="https://github.com/ahinagangopadhyay"
+                linkedInLink="https://www.linkedin.com/in/ahina-gangopadhyay-198631286/"
+                email="ahinaganguly05@gmail.com" />
+            <Developer
+                picture={arnab}
+                role='frontend & backend'
+                developerName="Arnab Pachal"
+                gitHubLink="https://github.com/Arnab-pachal"
+                linkedInLink="https://www.linkedin.com/in/arnab1/"
+                email="arnabpachal2004@gmail.com" />
+            {/* <Developer
+                picture={srideep}
+                role="Backend"
+                developerName="Srideep Banerjee"
+                gitHubLink="https://github.com/srideep-banerjee"
+                linkedInLink="https://www.linkedin.com/in/srideep-banerjee-64b712251/"
+                email="banerjee.srideep@gmail.com" /> */}
+        </div>
+    )
+}
+
+function Developer({
+    picture = "",
+    role = "Frontend",
+    developerName = "Name",
+    gitHubLink = "https://github.com/Super7000",
+    linkedInLink = "https://www.linkedin.com/in/srideep-banerjee-64b712251/",
+    email = ""
+}) {
+    return (
+        <div className="developer">
+            <div className="heading role">{role} Developer</div>
+            <div className="profile-picture-container">
+                <img src={picture} className="profile-pic" alt="profile picture"></img>
+            </div>
+            <div className="developer-details-container">
+                <div className="basic-details">
+                    <div className="field">
+                        <div className="field-name">Name:</div>
+                        <div className="value">{developerName}</div>
+                    </div>
+                    <div className="field email">
+                        <div className="field-name">Email:</div>
+                        <div className="value"><a href={"mailto:" + email} target="_blank">{email}</a></div>
+                    </div>
+                </div>
+                <div className="contact-details-container">
+                    <div className="heading">Contact Using</div>
+                    <div className="contact-links" style={{ marginTop: "0.5rem" }}>
+                        <a href={gitHubLink} className="contact-link" target="_blank" style={{ paddingRight: "0.5rem" }}>
+                            <GitHub size={24} />
+                        </a>
+                        <a href={linkedInLink} className="contact-link" target="_blank">
+                            <LinkedIn size={25} />
+                        </a>
+                        <a href={"mailto:" + email} className="contact-link" target="_blank">
+                            <Gmail size={35} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
